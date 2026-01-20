@@ -1,7 +1,5 @@
 import { Link, useLocation } from "wouter";
 
-const showLabel = true;
-
 export const Dock = () => {
 	const [location] = useLocation();
 	const isActive = (path: string) => location === path;
@@ -11,7 +9,7 @@ export const Dock = () => {
 			<button type="button" className={isActive("/") ? "dock-active" : ""}>
 				<Link to="/">
 					<i className="ri-home-4-line text-lg" />
-					{showLabel && <div className="dock-label">Home</div>}
+					<div className="dock-label">Home</div>
 				</Link>
 			</button>
 		</div>

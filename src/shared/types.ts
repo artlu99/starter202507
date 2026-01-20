@@ -1,3 +1,3 @@
 export interface AppName {
-  name: string;
+	name: string;
 }

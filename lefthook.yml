@@ -5,7 +5,11 @@
 
 pre-commit:
   commands:
-    check:
+    type-check:
       glob: "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
       run: bunx tsc -b --noEmit
+      stage_fixed: true
+    biome:
+      glob: "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
+      run: bun biome check --write {staged_files}
       stage_fixed: true

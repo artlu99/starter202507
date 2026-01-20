@@ -5,8 +5,8 @@ import { fetcher } from "itty-fetcher";
 const api = fetcher({ base: "/api" });
 
 export const useNameQuery = () => {
-    return useQuery({
-        queryKey: ["name"],
-        queryFn: () => api.get<AppName>("/name"),
-    });
+	return useQuery({
+		queryKey: ["name"],
+		queryFn: () => api.get<AppName>("/name"),
+	});
 };

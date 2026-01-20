@@ -1,22 +1,32 @@
 import { useNameQuery } from "~/hooks/queries/useNameQuery";
 
 export const NavBar = () => {
-	const { data } = useNameQuery();
+	const { data, isLoading, isError } = useNameQuery();
+
+	const renderStart = () => {
+		if (isLoading) {
+			return <div className="skeleton h-6 w-24 rounded" />;
+		}
+
+		if (isError) {
+			return (
+				<div className="text-error flex items-center gap-2">
+					<i className="ri-error-warning-line" />
+					<span>Failed to load</span>
+				</div>
+			);
+		}
+
+		return <div className="flex items-center gap-2">{data?.name}</div>;
+	};
 
 	return (
 		<div className="navbar">
-			<div className="navbar-start">
-				<div className="flex items-center gap-2">
-					{data?.name ?? "Loading..."}
-				</div>
-			</div>
-
+			<div className="navbar-start">{renderStart()}</div>
 			<div className="navbar-end">
-				<div className="flex gap-8 items-center">
-					<button type="button" className="btn btn-ghost">
-						<i className="ri-menu-line" />
-					</button>
-				</div>
+				<button type="button" className="btn btn-ghost">
+					<i className="ri-menu-line" />
+				</button>
 			</div>
 		</div>
 	);
