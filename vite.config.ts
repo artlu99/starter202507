@@ -6,7 +6,6 @@ import { defineConfig } from "vite";
 // https://vite.dev/config/
 export default defineConfig({
 	plugins: [react(), cloudflare(), tailwindcss()],
-	server: { allowedHosts: ["vmi2697213.tailb8f35.ts.net"] },
 	resolve: {
 		alias: {
 			"~": "/src/frontend",
